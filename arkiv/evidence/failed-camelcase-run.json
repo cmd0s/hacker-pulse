@@ -1,0 +1,18 @@
+{
+  "status": "failed",
+  "run": "ethrome-pretest-0909",
+  "chainId": 7738577,
+  "sdk": "0.8.0-dev.4",
+  "startedAt": "2026-09-09T13:40:13.132Z",
+  "wallet": "0xd49545678AdccB6600266C53140844B68BfB6340",
+  "startingBalanceWei": "50000000000000000",
+  "transactions": [],
+  "snapshots": [],
+  "writes": [
+    "create station",
+    "create presence"
+  ],
+  "deleteCalls": 0,
+  "error": "Transaction 0xb469105e01c65733c194fe9e3f96fc4d7d240b58c33f9825d6ffcd3fc7c92059 reverted. Reason: an attribute name holds \"I\" (0x49) at byte 7, which is outside the name charset (\"A\"-\"Z\", \"a\"-\"z\", \"0\"-\"9\", \".\", \"-\" and \"_\", with a letter first)",
+  "finishedAt": "2026-09-09T13:40:17.772Z"
+}
