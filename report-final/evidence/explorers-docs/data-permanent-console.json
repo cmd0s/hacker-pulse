@@ -1,0 +1,8 @@
+[
+  {
+    "level": "error",
+    "message": "RangeError: Invalid time value\n    at I (https://data.arkiv.network/_next/static/chunks/74b4688ba72d6bdc.js:15:53772)\n    at L (https://data.arkiv.network/_next/static/chunks/74b4688ba72d6bdc.js:15:59309)\n    at av (https://data.arkiv.network/_next/static/chunks/3a7ba59533961d35.js:1:63230)\n    at oY (https://data.arkiv.network/_next/static/chunks/3a7ba59533961d35.js:1:83503)\n    at io (https://data.arkiv.network/_next/static/chunks/3a7ba59533961d35.js:1:94935)\n    at sc (https://data.arkiv.network/_next/static/chunks/3a7ba59533961d35.js:1:137956)\n    at https://data.arkiv.network/_next/static/chunks/3a7ba59533961d35.js:1:137801\n    at ss (https://data.arkiv.network/_next/static/chunks/3a7ba59533961d35.js:1:137809)\n    at u9 (https://data.arkiv.network/_next/static/chunks/3a7ba59533961d35.js:1:133734)\n    at sH (https://data.arkiv.network/_next/static/chunks/3a7ba59533961d35.js:1:159450)",
+    "timestamp": "2026-09-09T14:05:15.101Z",
+    "url": "https://data.arkiv.network/_next/static/chunks/74b4688ba72d6bdc.js"
+  }
+]

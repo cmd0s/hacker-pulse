@@ -1,0 +1,132 @@
+Browser tab: 1423124866, Title: "Arkiv BlockExplorer", URL: "https://tiramisu.explorer.arkiv.network/entity/0xb9d433e89d56e13e189154f3e90aba08c791b6b8ede10bf47214119b06ee8a5d".
+0 AXWebArea Arkiv BlockExplorer, URL: tiramisu.explorer.arkiv.network/entity/0xb9d433e89d56e13e189154f3e90aba08c791b6b8ede10bf47214119b06ee8a5d
+	1 container root
+		2 container
+			3 heading [ ARKIV BLOCKEXPLORER ], Value: 1
+				107 text [
+				5 text ARKIV BLOCKEXPLORER
+				108 text ]
+			7 pop up button (collapsed) Description: Open navigation menu, Help: Navigation menu, Secondary Actions: Expand
+		109 container
+			110 container Breadcrumb
+				111 link Description: HOME, Value: tiramisu.explorer.arkiv.network/
+				112 text >>
+				113 text ENTITY DETAILS
+			114 heading Entity, Value: 2
+				115 text Entity
+			116 text field (settable) 0xb9d433e89d56e13e189154f3e90aba08c791b6b8ede10bf47214119b06ee8a5d
+			117 button Look up
+			118 text DELETED 0xb9d433e89d56e13e189154f3e90aba08c791b6b8ede10bf47214119b06ee8a5d
+			119 button Copy entity key
+			120 heading OVERVIEW, Value: 3
+				121 text OVERVIEW
+			122 definition list
+				123 container Status
+					124 text Status
+				125 text DELETED
+				126 container Operations
+					127 text Operations
+				128 text 2
+				129 container Content type
+					130 text Content type
+				131 text application/octet-stream
+				132 container Payload
+					133 text Payload
+				134 text 128 B
+			135 heading CREATED, Value: 3
+				136 text CREATED
+			137 definition list
+				138 container Block
+					139 text Block
+				140 link Description: 226823, Value: tiramisu.explorer.arkiv.network/block?block=226823
+				141 container Date
+					142 text Date
+				143 text 2026-09-09, 15:53:18 CET
+				144 container Transaction
+					145 text Transaction
+				146 link Description: 0x9e4810b5…317192f0, Help: 0x9e4810b54dec3ca52d836d7af71f9777efba7f1da774a316be0caff7317192f0, Value: tiramisu.explorer.arkiv.network/tx/0x9e4810b54dec3ca52d836d7af71f9777efba7f1da774a316be0caff7317192f0
+			147 heading LAST ACTIVITY, Value: 3
+				148 text LAST ACTIVITY
+			149 definition list
+				150 container Operation
+					151 text Operation
+				152 text DELETE
+				153 container Date
+					154 text Date
+				155 text 2026-09-09, 15:54:40 CET
+				156 container Block
+					157 text Block
+				158 link Description: 226864, Value: tiramisu.explorer.arkiv.network/block?block=226864
+				159 container Transaction
+					160 text Transaction
+				161 link Description: 0x91d545b1…ba309c5d, Help: 0x91d545b1b2ffbd49b12f2a9cfdf8c69e4f92aaf7432e4e11aa5926e7ba309c5d, Value: tiramisu.explorer.arkiv.network/tx/0x91d545b1b2ffbd49b12f2a9cfdf8c69e4f92aaf7432e4e11aa5926e7ba309c5d
+				162 container Expires
+					163 text Expires
+				164 container Set by the create in block 226823
+					165 text 900  blocks (~ 30m 0s ) from block 226823
+			166 heading OPERATION HISTORY (2), Value: 3
+				167 text OPERATION HISTORY ( 2 )
+			168 table
+				169 row
+					170 cell
+						171 text Block
+					172 cell
+						173 text Date
+					174 cell
+						175 text Transaction
+					176 cell
+						177 text Op
+					178 cell
+						179 text Operation
+					180 cell
+						181 text Content type
+					182 cell
+						183 text Payload
+					184 cell
+						185 text Expires
+					186 cell
+						187 text New owner
+				188 row
+					189 cell
+						190 link Description: 226823, Value: tiramisu.explorer.arkiv.network/block?block=226823
+					191 cell 2026-09-09T13:53:18.000Z
+						192 text 2026-09-09, 15:53:18 CET
+					193 cell
+						194 link Description: 0x9e4810b5…317192f0, Help: 0x9e4810b54dec3ca52d836d7af71f9777efba7f1da774a316be0caff7317192f0, Value: tiramisu.explorer.arkiv.network/tx/0x9e4810b54dec3ca52d836d7af71f9777efba7f1da774a316be0caff7317192f0
+					195 cell
+						196 text # 0
+					197 cell
+						198 text CREATE
+					199 cell
+						200 text application/octet-stream
+					201 cell 128 bytes
+						202 text 128 B
+					203 cell
+						204 text 900 blocks
+					205 cell
+						206 text —
+				207 row
+					208 cell
+						209 link Description: 226864, Value: tiramisu.explorer.arkiv.network/block?block=226864
+					210 cell 2026-09-09T13:54:40.000Z
+						211 text 2026-09-09, 15:54:40 CET
+					212 cell
+						213 link Description: 0x91d545b1…ba309c5d, Help: 0x91d545b1b2ffbd49b12f2a9cfdf8c69e4f92aaf7432e4e11aa5926e7ba309c5d, Value: tiramisu.explorer.arkiv.network/tx/0x91d545b1b2ffbd49b12f2a9cfdf8c69e4f92aaf7432e4e11aa5926e7ba309c5d
+					214 cell
+						215 text # 0
+					216 cell
+						217 text DELETE
+					218 cell
+						219 text —
+					220 cell 0 bytes
+						221 text —
+					222 cell
+						223 text —
+					224 cell
+						225 text —
+		103 container
+			104 link Description: llms.txt, Value: tiramisu.explorer.arkiv.network/llms.txt
+			105 link Description: admin login, Value: tiramisu.explorer.arkiv.network/entity/0xb9d433e89d56e13e189154f3e90aba08c791b6b8ede10bf47214119b06ee8a5d#
+	106 image js-plotly-tester
+
+The focused UI element is 0 AXWebArea Arkiv BlockExplorer, URL: tiramisu.explorer.arkiv.network/entity/0xb9d433e89d56e13e189154f3e90aba08c791b6b8ede10bf47214119b06ee8a5d

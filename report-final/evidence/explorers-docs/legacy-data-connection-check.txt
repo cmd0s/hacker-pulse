@@ -1,0 +1,185 @@
+Browser tab: 1423124866, Title: "Arkiv BlockExplorer", URL: "https://tiramisu.explorer.arkiv.network/data?q=*".
+1 AXWebArea Arkiv BlockExplorer, URL: tiramisu.explorer.arkiv.network/data?q=*
+	2 container root
+		3 container
+			4 heading [ ARKIV BLOCKEXPLORER ], Value: 1
+				80 text [
+				6 text ARKIV BLOCKEXPLORER
+				81 text ]
+			8 pop up button (collapsed) Description: Open navigation menu, Help: Navigation menu, Secondary Actions: Expand
+		9 container
+			10 container Breadcrumb
+				11 link Description: HOME, Value: tiramisu.explorer.arkiv.network/
+				82 text >>
+				13 text DATA
+			14 heading Data, Value: 2
+				15 text Data
+			16 text Query the live entity state held by an Arkiv node. The index does not store entity state, so every result here comes straight from the selected RPC endpoint.
+			17 link Description: Query language docs, Value: docs.arkiv.network/start-here/data-explorer
+			18 text . QUERY AGAINST
+			19 container RPC source
+				20 button Default node, Help: /api/shadow-rpc
+				21 button Experimental index, Help: /api/shadow-rpc/experimental
+				22 button Both (compare)
+			23 text /api/shadow-rpc
+			24 text entry area (settable) *
+				56 text *
+			25 text Ctrl + Enter  runs the query Page size
+			26 pop up button (collapsed, settable) Page size, Value: 25, Secondary Actions: Expand
+				27 menu
+					28 5
+					29 10
+					30 (selected) 25
+					31 50
+					32 100
+			33 text Show
+			34 pop up button (collapsed, settable) Show, Value: All entities, Secondary Actions: Expand
+				35 menu
+					36 (selected) All entities
+					37 Expiring within 24h
+			38 button Clear
+			57 button Copy link, Help: https://tiramisu.explorer.arkiv.network/data?q=*
+			39 button Run query
+			40 text Try
+			41 button Everything, Help: *
+			42 button By entity key, Help: $key = key(0x)
+			43 button By owner, Help: $owner = addr(0x)
+			44 button By text attribute, Help: status = str('active')
+			45 button By numeric attribute, Help: score > i32(100)
+			46 button Text prefix, Help: name STARTSWITH str('ark')
+			47 button Expiring after a block, Help: $expiresAt >= u64(0)
+			58 container
+				59 text Method not available . Method not found: arkiv_query This endpoint does not serve entity queries.
+			49 button (expanded) RPC endpoint /api/shadow-rpc NO UPSTREAM CHECK FAILED, Secondary Actions: Collapse
+				50 text RPC endpoint
+				51 text /api/shadow-rpc
+				52 text NO UPSTREAM
+				83 text CHECK FAILED
+			60 heading RPC ENDPOINT, Value: 3
+				61 text RPC ENDPOINT
+			62 RPC endpoint
+				63 container
+					64 radio button (settable, integer) Value: 1, Description: Indexer backend /api/shadow-rpc forwards the entity reads to the node it is configured with, using the deployment's own API key. The backend has no upstream node configured (SHADOW_RPC_UPSTREAM is unset), so it cannot forward entity reads.
+					65 text Indexer backend /api/shadow-rpc  forwards the entity reads to the node it is configured with, using the deployment's own API key. The backend has no upstream node configured ( SHADOW_RPC_UPSTREAM  is unset), so it cannot forward entity reads.
+				66 container
+					67 radio button (settable, integer) Value: 0, Description: Indexer entity index EXPERIMENTAL /api/shadow-rpc/experimental answers the entity reads from the indexer's own projection of the decoded operations, without asking a node. Same query language and wire format, so its answers can be checked against the backend's. Payloads are never available, entities created before the index floor are unknown, and latest means the projected head. This deployment has not enabled the entity index (ENTITY_QUERY_INDEX), so this endpoint answers 404.
+					68 text Indexer entity index  EXPERIMENTAL /api/shadow-rpc/experimental  answers the entity reads from the indexer's own projection of the decoded operations, without asking a node. Same query language and wire format, so its answers can be checked against the backend's. Payloads are never available, entities created before the index floor are unknown, and latest  means the projected head. This deployment has not enabled the entity index ( ENTITY_QUERY_INDEX ), so this endpoint answers 404.
+				69 container
+					70 radio button (settable, integer) Value: 0, Description: Custom RPC URL Called straight from the browser, so the node must allow cross-origin requests. A key in the URL stays in this browser's local storage only. https://rpc.example.arkiv.network/<api-key>
+					71 text Custom RPC URL Called straight from the browser, so the node must allow cross-origin requests. A key in the URL stays in this browser's local storage only.
+				72 container
+					73 radio button (settable, integer) Value: 0, Description: Both, compared Sends each query to /api/shadow-rpc and /api/shadow-rpc/experimental at once, both pinned to the lower of the two heads so the index's lag does not read as a difference, and reports the timings side by side with every field the two answers disagree on. The table below shows the node's answer. This deployment has not enabled the entity index (ENTITY_QUERY_INDEX), so this endpoint answers 404.
+					74 text Both, compared Sends each query to  /api/shadow-rpc  and /api/shadow-rpc/experimental  at once, both pinned to the lower of the two heads so the index's lag does not read as a difference, and reports the timings side by side with every field the two answers disagree on. The table below shows the node's answer. This deployment has not enabled the entity index ( ENTITY_QUERY_INDEX ), so this endpoint answers 404.
+			75 heading CONNECTION CHECK, Value: 3
+				76 text CONNECTION CHECK
+			77 container
+				78 text Calls  eth_chainId ,  web3_clientVersion , and the three Arkiv reads ( arkiv_query, arkiv_getEntityCount, arkiv_getBlockTiming ) against the selected endpoint. Nothing is written.
+			79 button Check connection
+			84 text NOT USABLE FAILED
+			85 text /api/shadow-rpc
+			86 text 2026-09-09, 15:55:37 CET  ·  5  calls ·  359  ms
+			87 heading NODE, Value: 3
+				88 text NODE
+			89 definition list
+				90 container Chain id
+					91 text Chain id
+				92 text 7738577
+				93 container Client
+					94 text Client
+				95 text arkiv-chain-indexer/v0.4.0-a54e449bcd15/bun-1.4.0
+				96 container Head block
+					97 text Head block
+				98 text —
+				99 container Head time
+					100 text Head time
+				101 text —
+				102 container Block time
+					103 text Block time
+				104 text —
+			105 heading ENTITIES, Value: 3
+				106 text ENTITIES
+			107 definition list
+				108 container Live entities
+					109 text Live entities
+				110 text —
+				111 container Sample key
+					112 text Sample key
+				113 text —
+				114 container Sample owner
+					115 text Sample owner
+				116 text —
+			117 heading VERDICT, Value: 3
+				118 text VERDICT
+			119 text At least one Arkiv read method failed. Entity queries will not work through this endpoint until it does.
+			120 table
+				121 row
+					122 cell
+						123 text Method
+					124 cell
+						125 text Checks that
+					126 cell
+						127 text Status
+					128 cell
+						129 text Time
+					130 cell
+						131 text Result
+				132 row
+					133 cell
+						134 text eth_chainId
+					135 cell
+						136 text The endpoint is a JSON-RPC node
+					137 cell
+						138 text OK
+					139 cell
+						140 text 59  ms
+					141 cell
+						142 text chain id 7738577
+				143 row
+					144 cell
+						145 text web3_clientVersion
+					146 cell
+						147 text Which client answers
+					148 cell
+						149 text OK
+					150 cell
+						151 text 56  ms
+					152 cell
+						153 text arkiv-chain-indexer/v0.4.0-a54e449bcd15/bun-1.4.0
+				154 row
+					155 cell
+						156 text arkiv_getBlockTiming
+					157 cell
+						158 text Block heights can be turned into dates
+					159 cell
+						160 text ERROR -32601
+					161 cell
+						162 text 140  ms
+					163 cell
+						164 text arkiv_getBlockTiming was rejected (-32601): Method not found: arkiv_getBlockTiming
+				165 row
+					166 cell
+						167 text arkiv_getEntityCount
+					168 cell
+						169 text The node counts live entities
+					170 cell
+						171 text ERROR -32601
+					172 cell
+						173 text 52  ms
+					174 cell
+						175 text arkiv_getEntityCount was rejected (-32601): Method not found: arkiv_getEntityCount
+				176 row
+					177 cell
+						178 text arkiv_query
+					179 cell
+						180 text Entities can be queried
+					181 cell
+						182 text ERROR -32601
+					183 cell
+						184 text 52  ms
+					185 cell
+						186 text arkiv_query was rejected (-32601): Method not found: arkiv_query
+		53 container
+			54 link Description: llms.txt, Value: tiramisu.explorer.arkiv.network/llms.txt
+			55 link Description: admin login, Value: tiramisu.explorer.arkiv.network/data?q=*#
+
+The focused UI element is 1 AXWebArea Arkiv BlockExplorer, URL: tiramisu.explorer.arkiv.network/data?q=*

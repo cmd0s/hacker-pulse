@@ -1,0 +1,148 @@
+# Arkiv explorers and documentation — pre-ETHROME test report
+
+Tested on September 9, 2026, approximately 15:54–16:07 CEST, in Chrome on macOS. Desktop viewport: 1720 × 1267; mobile viewport: 390 × 844, using desktop Chrome with a viewport override rather than a physical phone.
+
+**Six defects were confirmed. The highest priorities are a Data Explorer crash when displaying a permanent entity, an unconfigured default RPC on the block explorer’s Data page, and a broken copy-and-paste curl example in the documentation.**
+
+| Target | Result |
+| --- | --- |
+| [Tiramisu Block Explorer](https://tiramisu.explorer.arkiv.network/) | Block, transaction, and entity-history navigation worked. Incorrect token and timezone labels. |
+| [Block Explorer /data](https://tiramisu.explorer.arkiv.network/data) | Default reads failed. Selecting the documented public RPC restored queries. |
+| [Data Explorer](https://data.arkiv.network/) | Ordinary reads, pagination, and live activity worked. A permanent entity crashed the application. |
+| [Documentation](https://docs.arkiv.network/) | Search, navigation, and Markdown copying worked. A copied JSON-RPC shell example sent an invalid query. |
+
+## E01 — A permanent entity crashes Data Explorer
+
+**Priority: high. Confirmed with a specific entity on desktop; initially encountered in mobile Latest entities results.**
+
+Reproduction:
+
+1. Open Data Explorer on Tiramisu.
+2. Enter the following query and select Execute:
+
+```text
+$key = key(0xfeb9f90dcb99e8ba1137786436b3084e01c0e2d562b779736f4165abe929b616)
+```
+
+The entire application is replaced by a client-side exception page. The application’s own JavaScript bundle logs `RangeError: Invalid time value`. A direct public RPC read confirmed that this entity exists and has `expiresAt: "0xffffffffffffffff"`.
+
+Expected: display the entity with a “Permanent” or “No expiration” label. An unusual expiry value must not make the whole explorer unusable.
+
+Suggested fix: handle the permanent-expiry sentinel before converting block heights to dates, guard invalid/out-of-range dates, and contain rendering errors within an individual result card. The exact failing source expression was not inspected; date conversion is the likely mechanism, supported by the expiry value and error.
+
+The initial mobile failure occurred at `14:02:25.439Z` while loading `$expiresAt >= u64(0)`. Reloading later succeeded with a newer result set. The specific-key test reproduced the failure on desktop at `14:05:15.101Z`, so this is not a mobile-only defect. No entities were created for this test.
+
+Evidence: [mobile crash](screenshots/13-data-mobile-client-exception.png), [desktop reproduction](screenshots/15-data-permanent-entity-crash-desktop.png), [application stack trace](data-permanent-console.json), [RPC request and response](large-expiry-rpc.json).
+
+## E02 — /data has no working default source
+
+**Priority: high.**
+
+On [the Data page](https://tiramisu.explorer.arkiv.network/data), select Default node → Everything → Run query.
+
+Actual: `Method not found: arkiv_query`. The RPC panel reports `NO UPSTREAM` and explicitly states that `SHADOW_RPC_UPSTREAM` is unset. Its connection check returns chain ID 7738577, but `arkiv_query`, `arkiv_getEntityCount`, and `arkiv_getBlockTiming` all fail with `-32601`. The reported client is `arkiv-chain-indexer/v0.4.0-a54e449bcd15/bun-1.4.0`.
+
+Experimental index also remains selectable, but running the same query returns HTTP 404 because `ENTITY_QUERY_INDEX` is disabled. The UI explains this, but still offers the unavailable source as an actionable option.
+
+Expected: the default source should support entity reads, or the page should guide the user to a working source before enabling query execution.
+
+**Verified workaround:** expand RPC endpoint, choose Custom RPC URL, and enter:
+
+```text
+https://rpc.tiramisu.db-chain.testnet.arkiv.network
+```
+
+The same `*` query then returned 25 entities at block 226930; the UI reported 186 ms. Configure the backend upstream or use a working public default. Disable unavailable experimental/compare choices with an explanation.
+
+Evidence: [default error](screenshots/03-data-default-method-not-found.png), [configuration panel](screenshots/04-data-endpoint-unconfigured.png), [connection check](legacy-data-connection-check.txt), [experimental error](screenshots/06-data-index-disabled.png), [working custom RPC](screenshots/07-legacy-data-custom-rpc-working.png).
+
+## E03 — The “By attribute” curl example loses its string quotes
+
+**Priority: high for developer onboarding.**
+
+In [JSON-RPC → Querying Data → Query Examples](https://docs.arkiv.network/json-rpc/querying-data/#query-examples), copy the “By attribute” command and run it in a POSIX-style shell. The JSON is enclosed in single quotes, but its query contains unescaped single quotes around `nft` and `active`.
+
+The intended query is:
+
+```text
+type = str('nft') AND status = str('active')
+```
+
+Shell parsing instead produces:
+
+```text
+type = str(nft) AND status = str(active)
+```
+
+This was verified locally with zsh by capturing curl’s arguments. Sending the resulting body to the public RPC returned error `-32003`: `str takes a single-quoted string`. Sending the correctly quoted query succeeded with an empty result at block `0x37765`. Empty results are valid here; the test checks parsing, not whether matching NFTs exist.
+
+Suggested fix: use a quoted heredoc or a JSON file with `--data-binary @file`. Review the other shell examples containing string literals for the same quoting pattern.
+
+Ready-to-use replacement: [docs-query-corrected.sh](docs-query-corrected.sh).
+
+Evidence: [documentation screenshot](screenshots/17-docs-curl-quoting.png), [original copied command](docs-query-original.sh), [body after shell parsing](docs-query-shell-result.json), [original RPC error](docs-original-rpc.json), [corrected RPC response](docs-corrected-rpc.json).
+
+## E04 — Tiramisu fees are labelled ETH instead of GLM
+
+**Priority: medium.**
+
+Open [block 226864](https://tiramisu.explorer.arkiv.network/block?block=226864), then its first transaction. Transaction value and fees use `ETH`; Home also uses `ETH` for burnt fees and wallet fee totals. The [Tiramisu network reference](https://docs.arkiv.network/networks/tiramisu/) identifies GLM as the native gas token.
+
+Expected: use the selected chain’s native token symbol consistently. This finding concerns the displayed unit; incorrect numerical fee calculations were not established.
+
+Evidence: [transaction details](screenshots/02-transaction-units-timezone.png), [Home](screenshots/01-block-explorer-home.png).
+
+## E05 — Summer timestamps use the CET label for UTC+2
+
+**Priority: medium for interpreting transaction times.**
+
+With Europe Warsaw selected, the transaction in block 226864 is displayed as `2026-09-09, 15:54:40 CET`. Its entity-history cell exposes the corresponding ISO timestamp `2026-09-09T13:54:40.000Z`. The displayed time therefore uses UTC+2, whereas the CET label denotes UTC+1. In this date/zone combination the label should be CEST, or an explicit `UTC+02:00`.
+
+Suggested fix: derive the offset/abbreviation from the timestamp and selected IANA timezone, rather than using a fixed label. Check winter dates too.
+
+Evidence: [entity-history timestamps](entity-history.txt), [transaction screenshot](screenshots/02-transaction-units-timezone.png), [Europe Warsaw selection](screenshots/12-block-explorer-mobile-menu.png).
+
+## E06 — Generated TypeScript ignores the selected page size
+
+**Priority: low.**
+
+In Data Explorer, run a query, change Page size to 5, then enable the TypeScript panel. The URL records `pageSize=5` and the UI fetches five results, but the generated snippet still uses `limit: 50`.
+
+Expected: copy the current query settings into the snippet, or explicitly label it as a generic example with independent defaults. This matters when developers try to reproduce the UI request.
+
+The copied snippet correctly escaped a backtick inside a string literal and passed `node --check`; this is a settings mismatch, not a JavaScript syntax defect.
+
+Evidence: [UI and snippet](screenshots/09-typescript-page-size.png), [copied snippet](generated-query.mjs).
+
+## Additional UX observations
+
+- Invalid query syntax produces “Query rejected (parse, -32001): Requested resource not found.” The UI identifies a syntax problem, but the resource-not-found wording is misleading. Prefer the parser’s specific message and position. [Screenshot](screenshots/08-data-invalid-query.png).
+- Pagination says “Showing 50 of 50 entities · more available”; after loading two five-item pages it says “10 of 10” with more available. “50 loaded; more available” would avoid suggesting a known total.
+- A negative block number is submitted to the backend and reported as “not found in storage”. Validate a non-negative integer before submitting. Loading a valid block afterward worked.
+
+## Passed checks and coverage
+
+| Area | Verified behavior |
+| --- | --- |
+| Block Explorer | Live blocks and statistics loaded; block → transaction → deleted-entity history worked; CREATE and DELETE history entries were shown; recovery after an invalid block lookup worked. |
+| Legacy /data | Default/experimental failures were explicit; the built-in connection test exposed individual method errors; custom public RPC returned real results. |
+| Data Explorer | Latest entities returned 50 records; page size 5 returned five; Load next page increased the loaded count to ten; a synthetic nonexistent project returned “No entities found”; Ctrl+Enter executed a query; malformed syntax showed an error. |
+| Live activity | Start received CREATE and DELETE events; Stop returned the control to Start; selecting a CREATE event opened a query by key and returned one entity. This confirms visible event delivery, not the underlying transport or reconnect behavior. |
+| Docs | Search for “expiration” returned 56 results; a result navigated to the relevant section; Installation, Tiramisu, Mutating Data, and JSON-RPC Querying Data opened; Copy Markdown on Tiramisu produced Markdown with absolute links; Get Access Key redirected from `/api-keys` to the working `/access-keys` page. |
+| Responsive views | Inspected Block Explorer Home, its menu, legacy /data, Data Explorer, Docs Home, Installation, and the docs menu at 390 × 844. No general layout collapse was observed; the Data Explorer exception is documented separately. |
+
+## Scope and limitations
+
+This was an exploratory UI and read-only integration review, not a security audit or a full regression suite. No wallet connections, signatures, claims, transactions, writes, or feedback submissions were made. Shared public entities were only read. No complete tutorial application was built, and the SDK’s write examples were not executed. The generated snippet received a syntax check, not a runtime SDK compatibility test.
+
+The initial direct RPC attempt was blocked by the local sandbox’s DNS restrictions; Python’s HTTP client subsequently received 403. The documented curl transport succeeded. These tool/environment-specific failures are not counted as Arkiv defects. Console messages from Chrome extensions are also excluded; E01 has a stack trace from the application’s own bundle.
+
+Temporary mobile viewport settings were reset. The legacy Data source selection was returned to Default node. Live activity was stopped. Result sets change as entities are created, deleted, or expire; use the captured evidence and specific permanent-entity key when reproducing E01.
+
+## Suggested demonstration order
+
+1. Query the E01 entity and show the application crash alongside its valid RPC metadata.
+2. Run `*` on legacy /data with Default node, then switch to the public RPC and show successful results.
+3. Compare the copied curl command’s actual request with the corrected heredoc example.
+
+The screenshot directory and linked text/JSON files contain the reproduction evidence. The earlier Hub-only report remains available at [Arkiv Hub review](../arkiv-hub-2026-09-09/raport.md).

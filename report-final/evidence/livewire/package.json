@@ -1,0 +1,17 @@
+{
+  "name": "arkiv-livewire-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild app.js --bundle --format=esm --outfile=dist/app.js --minify=false",
+    "serve": "python3 -m http.server 4173",
+    "watch": "node watch.mjs"
+  },
+  "dependencies": {
+    "@arkiv-network/sdk": "^0.8.0",
+    "viem": "^2.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}

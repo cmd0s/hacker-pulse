@@ -1,0 +1,92 @@
+[
+  {
+    "level": "warn",
+    "message": "MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 close listeners added. Use emitter.setMaxListeners() to increase limit",
+    "timestamp": "2026-09-09T14:00:59.255Z",
+    "url": "chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/scripts/contentscript.js"
+  },
+  {
+    "level": "warn",
+    "message": "MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 end listeners added. Use emitter.setMaxListeners() to increase limit",
+    "timestamp": "2026-09-09T14:00:59.255Z",
+    "url": "chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/scripts/contentscript.js"
+  },
+  {
+    "level": "warn",
+    "message": "ObjectMultiplex - orphaned data for stream \"app-init-liveness\"",
+    "timestamp": "2026-09-09T14:00:59.260Z",
+    "url": "chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/scripts/contentscript.js"
+  },
+  {
+    "level": "warn",
+    "message": "ObjectMultiplex - orphaned data for stream \"app-init-liveness\"",
+    "timestamp": "2026-09-09T14:00:59.260Z",
+    "url": "chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/scripts/contentscript.js"
+  },
+  {
+    "level": "warn",
+    "message": "ObjectMultiplex - orphaned data for stream \"background-liveness\"",
+    "timestamp": "2026-09-09T14:00:59.260Z",
+    "url": "chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/scripts/contentscript.js"
+  },
+  {
+    "level": "warn",
+    "message": "ObjectMultiplex - orphaned data for stream \"background-liveness\"",
+    "timestamp": "2026-09-09T14:00:59.261Z",
+    "url": "chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/scripts/contentscript.js"
+  },
+  {
+    "level": "error",
+    "message": "TypeError: codes.forEach is not a function\n    at LanguageUtil.getBestMatchFromCodes (chrome-extension://lnaahdmijnjnmgaalacdgakieangpjgp/content_script.js:5539:11)\n    at setLng (chrome-extension://lnaahdmijnjnmgaalacdgakieangpjgp/content_script.js:6761:79)\n    at I18n.changeLanguage (chrome-extension://lnaahdmijnjnmgaalacdgakieangpjgp/content_script.js:6782:7)\n    at chrome-extension://lnaahdmijnjnmgaalacdgakieangpjgp/content_script.js:3362:16",
+    "timestamp": "2026-09-09T14:00:59.769Z",
+    "url": "chrome-extension://lnaahdmijnjnmgaalacdgakieangpjgp/content_script.js"
+  },
+  {
+    "level": "warn",
+    "message": "MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 close listeners added. Use emitter.setMaxListeners() to increase limit",
+    "timestamp": "2026-09-09T14:01:58.029Z",
+    "url": "chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/scripts/contentscript.js"
+  },
+  {
+    "level": "warn",
+    "message": "MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 end listeners added. Use emitter.setMaxListeners() to increase limit",
+    "timestamp": "2026-09-09T14:01:58.032Z",
+    "url": "chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/scripts/contentscript.js"
+  },
+  {
+    "level": "warn",
+    "message": "ObjectMultiplex - orphaned data for stream \"app-init-liveness\"",
+    "timestamp": "2026-09-09T14:01:58.032Z",
+    "url": "chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/scripts/contentscript.js"
+  },
+  {
+    "level": "warn",
+    "message": "ObjectMultiplex - orphaned data for stream \"app-init-liveness\"",
+    "timestamp": "2026-09-09T14:01:58.032Z",
+    "url": "chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/scripts/contentscript.js"
+  },
+  {
+    "level": "warn",
+    "message": "ObjectMultiplex - orphaned data for stream \"background-liveness\"",
+    "timestamp": "2026-09-09T14:01:58.033Z",
+    "url": "chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/scripts/contentscript.js"
+  },
+  {
+    "level": "warn",
+    "message": "ObjectMultiplex - orphaned data for stream \"background-liveness\"",
+    "timestamp": "2026-09-09T14:01:58.043Z",
+    "url": "chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/scripts/contentscript.js"
+  },
+  {
+    "level": "error",
+    "message": "TypeError: codes.forEach is not a function\n    at LanguageUtil.getBestMatchFromCodes (chrome-extension://lnaahdmijnjnmgaalacdgakieangpjgp/content_script.js:5539:11)\n    at setLng (chrome-extension://lnaahdmijnjnmgaalacdgakieangpjgp/content_script.js:6761:79)\n    at I18n.changeLanguage (chrome-extension://lnaahdmijnjnmgaalacdgakieangpjgp/content_script.js:6782:7)\n    at chrome-extension://lnaahdmijnjnmgaalacdgakieangpjgp/content_script.js:3362:16",
+    "timestamp": "2026-09-09T14:01:59.258Z",
+    "url": "chrome-extension://lnaahdmijnjnmgaalacdgakieangpjgp/content_script.js"
+  },
+  {
+    "level": "error",
+    "message": "RangeError: Invalid time value\n    at I (https://data.arkiv.network/_next/static/chunks/74b4688ba72d6bdc.js:15:53772)\n    at L (https://data.arkiv.network/_next/static/chunks/74b4688ba72d6bdc.js:15:59309)\n    at av (https://data.arkiv.network/_next/static/chunks/3a7ba59533961d35.js:1:63230)\n    at oY (https://data.arkiv.network/_next/static/chunks/3a7ba59533961d35.js:1:83503)\n    at io (https://data.arkiv.network/_next/static/chunks/3a7ba59533961d35.js:1:94935)\n    at sc (https://data.arkiv.network/_next/static/chunks/3a7ba59533961d35.js:1:137956)\n    at https://data.arkiv.network/_next/static/chunks/3a7ba59533961d35.js:1:137801\n    at ss (https://data.arkiv.network/_next/static/chunks/3a7ba59533961d35.js:1:137809)\n    at u9 (https://data.arkiv.network/_next/static/chunks/3a7ba59533961d35.js:1:133734)\n    at sH (https://data.arkiv.network/_next/static/chunks/3a7ba59533961d35.js:1:159450)",
+    "timestamp": "2026-09-09T14:02:25.439Z",
+    "url": "https://data.arkiv.network/_next/static/chunks/74b4688ba72d6bdc.js"
+  }
+]

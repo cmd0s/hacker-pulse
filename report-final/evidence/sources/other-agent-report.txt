@@ -1,0 +1,103 @@
+# Arkiv @ ETHROME — internal dry-run report (Mission 03 "Live Wire")
+
+Date: 2026-09-09, ~60 min, one person + agent. Network: **Tiramisu** (chain id `7738577`), `@arkiv-network/sdk` **0.8.0**, `viem` 2.56.3, Node 24.
+Goal: walk the hackathon participant's path from the hub to a working app and find out where people will trip.
+
+## TL;DR
+
+- **Mission 03 is achievable and works well.** `wss://rpc.tiramisu.db-chain.testnet.arkiv.network` accepts `eth_subscribe`; `client.watchEntityEvents()` on a `webSocket()` transport delivered the entity-creation event **in the same second the block was produced** (block 226476 → 13:41:44.013Z).
+- **The biggest risk for participants is SDK API drift, not the network.** Old examples (`subscribeEntityEvents`, the old event ABI, the `braga`/`kaolin` chains) compile, connect and… *silently deliver no events*. No error, no data.
+- **The chain emits no expiry event.** For Missions 02 and 03 this must be stated explicitly: "expired" is derived from `expiresAt` vs the block number; it is never pushed.
+- The MCP gateway works, but it is a documentation service (search/read knowledge, packages, skills) with no on-chain operations. Worth naming it as such on the site.
+
+## What we did (the participant's path)
+
+1. Recon of the hub (`/ethrome`, `/networks`, `/try-it-out`, docs) and of the existing Arkiv integration in Web3-Pi-UPS (read-only).
+2. Two entities created through **Try It Out** with the connected wallet `0x7938…8C91` (TTL 10 min = 300 blocks), attributes `match = str('AS Roma vs Inter') AND ticket_no = u64(4417)`.
+3. A Node listener (`src/livewire/watch.mjs`) — first with the old ABI (0 events), then with SDK 0.8.0 (events flow).
+4. A browser demo (`src/livewire/`): a "valid tickets" board with **no refresh loop at all** — rows arrive from `watchEntityEvents`, the countdown runs on `watchBlockNumber`, both over one WebSocket. Once `expiresAt` passes, the ticket is struck out and disappears (expiry as a feature — a nod to Mission 02).
+
+![demo](img/livewire-1.png)
+
+Raw subscription log: [img/watch-log-2026-09-09.txt](img/watch-log-2026-09-09.txt).
+
+## Findings (most important first)
+
+### 1. SDK API drift — silent absence of events ⚠️ (high)
+| old SDK (0.6.x, examples still in circulation) | SDK 0.8.0 (current) |
+|---|---|
+| `await client.subscribeEntityEvents({...}, pollingInterval, fromBlock)` → `Promise<unsubscribe>` | `client.watchEntityEvents({...})` → `unwatch` (synchronous) |
+| `onEntityUpdated`, `onEntityExpiresInExtended`, `onEntityExpired` | `onEntityPatched`, `onExpiryExtended`, `onOwnershipTransferred`, `onEvent` — **no `onEntityExpired`** |
+| ABI: `ArkivEntityCreated(uint256 indexed entityKey, address indexed owner, uint256 expirationBlock, uint256 cost)` | ABI: `EntityCreated(bytes32 entityKey, address owner, uint64 expiresAt, uint8 creationFlags)` — different `topic0`, contract address `0x4400…0044` |
+| chains `braga` (60138453102), `kaolin` | chains `tiramisu` (7738577), `localhost` |
+
+Effect: code using the old ABI/names connects to the network, `getBlockNumber()` works, and `watchEvent` never returns anything. A participant (or their AI assistant, which knows the older API) loses an hour. **Suggestion:** one canonical snippet on the mission page using `watchEntityEvents` + `webSocket()`, with the SDK version pinned.
+
+### 2. No expiry event (high for Missions 02/03)
+`ENTITY_EVENTS_ABI` in 0.8.0: `EntityCreated`, `EntityPatched`, `ExpiryExtended`, `OwnershipTransferred`, `EntityDeleted`. After `expiresAt` an entity vanishes from queries without any log. An app that "reacts to expiry" has to compute it (`expiresAt` from the event/entity vs `watchBlockNumber`). This is a sensible model, but it needs to be written into the mission brief — the current "something changes because data expired" suggests a push.
+
+### 3. Push vs polling depends on the transport (medium)
+`watchEntityEvents` delegates to viem's `watchEvent`. On `http()` it polls every `BLOCK_TIME/2 = 1000 ms`; on `webSocket()` viem uses `eth_subscribe` (true push). Passing `fromBlock` (replay) **forces polling** even over WS. The installation docs only show `http()`, and the hub's Mission 03 says "needs a live websocket endpoint" without an example. **Suggestion:** a `webSocket()` example plus one sentence about `fromBlock`.
+
+### 4. Try It Out — data collisions between users (medium, UX)
+- The default sample (`match = 'AS Roma vs Inter'`, `ticket_no = 4417`) is identical for everyone → our query also returned a stranger's entity (`0x8b8b…DC18A1`) with the same payload. At an event with 100 people everyone will "find" other people's tickets.
+- "Create another" restores the default payload but **keeps** the attributes from the previous step → we ended up with an unintended duplicate carrying the sample text instead of our own payload.
+- **Suggestion:** randomize `ticket_no` / add a per-wallet suffix to the sample; on "Create another" clear everything or nothing.
+
+### 5. Background noise on Tiramisu (low, but worth a heads-up)
+Two addresses (`0x679B…7B59`, `0x6CB4…5E22`) create entities in every block. Subscribing to "all events" means 1–3 events per 2 s. The event **does not carry attributes**, so filtering for your own data means `getEntity()` per event (an extra RPC). The docs should show an `owner` filter or a `getEntity`-after-event example.
+
+### 6. MCP gateway — works, but it is a "docs MCP" (low)
+`POST /ethrome` (streamable HTTP): `initialize` OK (`arkiv-ethrome 1.0.2`), `tools/list` OK: `server_status`, `search_knowledge`, `read_knowledge`, `list_knowledge`, `network_status`, `list_packages`, `get_package`, `list_skills`, `get_skill`. No tools for writing or reading entities. `GET` returns 405 — correct, but the link on the site looks like a web page and people will click it. **Suggestion:** describe it on the hub as "MCP with documentation and SDK compatibility; no on-chain operations" plus a short config for Claude Code / Cursor.
+
+### 7. Dead links / navigation (low)
+- `https://docs.arkiv.network/quickstart` (linked from the hub footer and from the "Done" step of Try It Out) → **404**. `/start-here/installation/` works.
+- Missions live under `/ethrome`; there is no `/missions` (people will guess).
+
+### 8. For the organizers to verify
+- The balance on the "Create" step showed `0.049979 GLM` before the first write, with a 0.1 GLM faucet — either the faucet pays 0.05, or the site spent something earlier. We did not have time to verify.
+- An event handler that throws lands in `onError` (good), but messages like `Do not know how to serialize a BigInt` will be common — `blockNumber`/`expiresAt` fields are `bigint`.
+
+## Receipts
+
+| what | value |
+|---|---|
+| entity #1 | `0x130d8cb6da66115b211821793407f5ba0f490991c1fea4d665fe2b4374442497`, block 226373, `expiresAt` 226673, payload "Robert jest wysoki" |
+| entity #2 | `0x130c88a8e71a10006695db461cd10d58225640cdb869befac8875e2ab74bcb5b`, tx `0xa0758e23…ba1500`, block 226476, `expiresAt` 226776 |
+| event push | `EntityCreated` received 13:41:44.013Z for block 226476 (2 s blocks → latency < 1 s) |
+| query | `match = str('AS Roma vs Inter') AND ticket_no = u64(4417)` → 3 entities @ block 226510 |
+| blockTiming | `{ currentBlock: 226510, blockDuration: 2 }` |
+| expiry of #1 | page: 3 → 2 tickets at block 226673 (no refresh); chain @ 226674: query returns 2 entities, `getEntity(0x130d8cb6…)` → `NoEntityFoundError: No live entity with key … It was never created, or it has been deleted or has expired.` No event was emitted. |
+
+Screenshots: [img/livewire-1.png](img/livewire-1.png) (start), [img/livewire-2-countdown.png](img/livewire-2-countdown.png) (countdown, 156 events pushed), [img/livewire-3-expired.png](img/livewire-3-expired.png) (after expiry).
+
+## Demo — how to run
+
+Hosted: **https://livewire.f12lab.net** · source: https://github.com/cmd0s/arkiv-livewire (private).
+
+```bash
+cd src/livewire
+npm install && npm run build
+npm run serve            # http://127.0.0.1:4173/index.html
+npm run watch -- 0x793899C85143277d702c93126ad532e514828C91   # optional: terminal log, filtered by owner
+```
+Then create an entity at `stage.hub.arkiv.network/try-it-out` with the attribute `match = str('AS Roma vs Inter')` — the row appears without a page refresh; after `expiresAt` it disappears.
+
+## Minimal Live Wire snippet (SDK 0.8.0)
+
+```js
+import { createPublicClient } from "@arkiv-network/sdk"
+import { tiramisu } from "@arkiv-network/sdk/chains"
+import { webSocket } from "viem"
+
+const client = createPublicClient({ chain: tiramisu, transport: webSocket() }) // http() would poll
+
+const unwatch = client.watchEntityEvents({
+  onEntityCreated: ({ entityKey, owner, expiresAt }) => console.log("created", entityKey, owner, expiresAt),
+  onEntityDeleted: ({ entityKey }) => console.log("deleted", entityKey),
+  onError: console.error,
+})
+
+// Expiry is not an event — derive it from the block number:
+client.watchBlockNumber({ onBlockNumber: (bn) => { /* compare bn with each entity's expiresAt */ } })
+```

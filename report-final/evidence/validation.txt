@@ -1,0 +1,12 @@
+Local consolidation validation — September 9, 2026
+PASS: one English Markdown report; nine defect sections and seven integration/documentation sections.
+PASS: every local Markdown link and contents anchor resolves.
+PASS: all 29 screenshots decode to valid dimensions with macOS sips and are referenced.
+PASS: source image bytes retained; 26 JPEG filenames corrected from .png to .jpg.
+PASS: all copied JSON evidence parses.
+PASS: Hacker Pulse 14 snapshots, same query, matching expiry, retained station, absent presence, zero delete calls.
+PASS: node --check on adapted Live Wire example and original generated query.
+PASS: sh -n on corrected curl example.
+PASS: SHA-256 manifest generated for supporting files (paths relative to report-final).
+No live tests, transactions, deployments, or external messages during consolidation.
+Live Wire deployment status is user-confirmed; hosted domains not independently retested here.

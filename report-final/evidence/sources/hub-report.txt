@@ -1,0 +1,73 @@
+# Arkiv Hub — pre-ETHROME review report
+
+Date: September 9, 2026, approximately 15:38–15:45 CEST. Environment: https://stage.hub.arkiv.network/.
+Version shown in the footer: `cba2f20af8483165e1cca86d078209858e417495`, build `2026-09-09T12:49:51Z`.
+
+**Result: two confirmed link defects and three observations about UX and event materials.** Fix Quickstart first: it blocks one of the main paths to getting started.
+
+The review was performed manually in Chrome at a desktop viewport of 1720 × 1323 and a mobile viewport of 390 × 844. All eight main sections were visited; mobile checks covered Home, Networks, ETHROME, and the menu. This was an exploratory review of the public interface, not a complete application test or security audit.
+
+## Confirmed defects
+
+### B01 — Quickstart / Getting Started leads to a 404 page
+
+**Priority: high before the event.**
+
+- Location: [Home](https://stage.hub.arkiv.network/), Resources → Getting Started card, and the Quickstart footer link.
+- Reproduction: open either link, which points to `https://docs.arkiv.network/quickstart`.
+- Actual result: the title is “404 | Arkiv documentation” and the page says “Page not found”. The error page was confirmed in the UI; the HTTP status was not measured.
+- Expected result: a working guide covering installation through the first write.
+- Suggested fix: link to [Installation](https://docs.arkiv.network/start-here/installation/), which was opened and contains installation, client setup, and Hello World instructions. Add a redirect from the old URL if other materials still reference it.
+- Scope: the shared footer repeats the problem across multiple pages. The “03 Build with the SDK” step on Home already links to the working guide.
+
+![Quickstart: 404 page](screenshots/02-quickstart-404.png)
+
+### B02 — Litepaper opens the documentation homepage
+
+**Priority: medium.**
+
+- Location: [Home](https://stage.hub.arkiv.network/) → Resources → Read Litepaper.
+- Reproduction: open the card’s target URL, `https://arkiv.network/docs/litepaper`.
+- Actual result: the browser ends up at `https://docs.arkiv.network/`, titled “Welcome to Arkiv | Arkiv documentation”. The document is not displayed.
+- Expected result: the actual litepaper, matching the card’s title and description.
+- Suggested fix: link to the current document. The main Arkiv website’s footer, inspected on its Privacy page, points to `https://arkiv.network/pdf/ARKIV_Litepaper.pdf`. This is a candidate replacement URL, but the PDF contents were not checked during this review.
+
+![Destination reached through the Litepaper link](screenshots/03-litepaper-redirect.png)
+
+## UX and content observations — separate from defects
+
+| ID | Observation | Suggested improvement |
+| --- | --- | --- |
+| U01 | Desktop has a “Light mode” button; the mobile menu at 390 × 844 has no equivalent. | Make theme switching available on mobile too. Low priority: inconsistent functionality between layouts. |
+| U02 | [ETHROME](https://stage.hub.arkiv.network/ethrome) states that qualification and submission requirements are still drafts; the full guide and workshop materials are pending. Mission 03 may be disabled if WebSocket support is unavailable. | Before the event, publish the submission deadline and process, required deliverables, and an explicit status for Mission 03. Participants should be able to establish the requirements without an MCP client. This is explicitly disclosed incomplete content, not a malfunction. |
+| U03 | The “Start building” CTA at the bottom of [Ecosystem](https://stage.hub.arkiv.network/ecosystem) points to Home, while the main CTA with that label on Home leads to Try It Out. | Align the CTA destinations or clarify the label; the current route adds a step for participants. Low priority: this is not a broken link. |
+
+![Mobile menu without a theme switch](screenshots/06-mobile-menu.png)
+
+## Checks that passed
+
+- Navigation to Home, Networks, ETHROME, Access Keys, Faucet, Try It Out, Ecosystem, and Tools.
+- Expanding all three mission descriptions and the ARKIV-CHUNKING limitations.
+- Copying the Chain ID (`7738577`) and RPC URL, verified by reading the clipboard. The first immediate Chain ID read was empty, but a repeated attempt succeeded; this is not classified as a defect.
+- “Replicate This” for Ocean: a confirmation message appeared and a complete prompt was present in the clipboard.
+- Searching for a nonexistent phrase: zero results and a clear empty state; “Clear all filters” restored 116 projects.
+- “Winners”: the filter became selected, the URL contained `winners=1`, and the count changed to 27 projects.
+- “Connect wallet” opened the provider list; Escape closed the modal and restored focus to the button.
+- The mobile menu opened, allowed section navigation, and closed after selection. No broken layout was observed in the inspected views. Long addresses on Networks were visually clipped but had copy buttons.
+- Installation instructions and the privacy policy were accessible. Data Explorer loaded its interface, and “Latest entities” populated an example query.
+
+## Limitations and inconclusive checks
+
+The wallet was disconnected in the new tab used for testing. No signature-based login, token claim, access key creation, or entity write was performed. Access Keys, Faucet, and Try It Out were checked up to the wallet requirement screen. The MCP protocol, RPC/WebSocket connectivity, and the complete set of external repositories and demo applications were not tested.
+
+While attempting to execute a query in Data Explorer, browser control timed out, after which the browser connection became unavailable. The result could not be inspected; this is not evidence of an Explorer defect. The temporary mobile viewport override had already been reset.
+
+The inspected console logs contained warnings and an error originating from Chrome extensions. These are not attributed to Arkiv Hub. No performance measurements, full accessibility audit, or security tests were performed.
+
+## Short demonstration for the team
+
+1. Home → Getting Started → show the 404 page; compare it with the working “03 Build with the SDK” step.
+2. Home → Read Litepaper → show that it opens the documentation homepage.
+3. Compare the desktop and mobile menus for theme switch availability.
+
+Evidence is saved in `screenshots/`: seven PNG images covering both defects, desktop Tools, and mobile Home, Networks, menu, and ETHROME.

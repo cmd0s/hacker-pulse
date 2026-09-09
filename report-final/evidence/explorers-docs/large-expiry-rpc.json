@@ -1,0 +1,95 @@
+{
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 3,
+    "method": "arkiv_query",
+    "params": [
+      "$expiresAt > u64(1000000000)",
+      {
+        "limit": "0xa",
+        "select": {
+          "key": true,
+          "createdAt": true,
+          "expiresAt": true,
+          "contentType": true,
+          "creationFlags": true
+        }
+      }
+    ]
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": {
+      "data": [
+        {
+          "key": "0xfeb9f90dcb99e8ba1137786436b3084e01c0e2d562b779736f4165abe929b616",
+          "createdAt": "0x3770f",
+          "expiresAt": "0xffffffffffffffff",
+          "creationFlags": {
+            "readonly": false,
+            "permissionlessExtension": false,
+            "raw": 0
+          },
+          "contentType": "application/json"
+        },
+        {
+          "key": "0x97139a20a4a1ff068a36a37f89463bd1a071ffb9b07483e8ee1ab1b22933f5a7",
+          "createdAt": "0x3770f",
+          "expiresAt": "0xffffffffffffffff",
+          "creationFlags": {
+            "readonly": false,
+            "permissionlessExtension": false,
+            "raw": 0
+          },
+          "contentType": "application/json"
+        },
+        {
+          "key": "0x90721529d5fc0a3483ab71d445d2c8d22d4fef55b548ef1ce4e4c8bf611a4891",
+          "createdAt": "0x3770f",
+          "expiresAt": "0xffffffffffffffff",
+          "creationFlags": {
+            "readonly": false,
+            "permissionlessExtension": false,
+            "raw": 0
+          },
+          "contentType": "application/json"
+        },
+        {
+          "key": "0x4b18bf4ab30c006168a58944fe62923f5c0b6241205c7ff09ec3ff5bbbf4b8a1",
+          "createdAt": "0x3770f",
+          "expiresAt": "0xffffffffffffffff",
+          "creationFlags": {
+            "readonly": false,
+            "permissionlessExtension": false,
+            "raw": 0
+          },
+          "contentType": "application/json"
+        },
+        {
+          "key": "0x3662d1b5b9f5e5ac4412e6436495d2308908563c660bf9d9054df964d476c0be",
+          "createdAt": "0x3770f",
+          "expiresAt": "0xffffffffffffffff",
+          "creationFlags": {
+            "readonly": false,
+            "permissionlessExtension": false,
+            "raw": 0
+          },
+          "contentType": "application/json"
+        },
+        {
+          "key": "0xa7465960cee7c28472d166f345a2ce5089433f30b6ae922a4205520abb4961cb",
+          "createdAt": "0x360fe",
+          "expiresAt": "0xffffffffffffffff",
+          "creationFlags": {
+            "readonly": false,
+            "permissionlessExtension": false,
+            "raw": 0
+          },
+          "contentType": "application/octet-stream"
+        }
+      ],
+      "blockNumber": "0x37765"
+    }
+  }
+}

@@ -1,0 +1,850 @@
+Browser tab: 1423124878, Title: "Querying Data | Arkiv documentation", URL: "https://docs.arkiv.network/json-rpc/querying-data/".
+1 AXWebArea Querying Data | Arkiv documentation, URL: docs.arkiv.network/json-rpc/querying-data/
+	2 link Description: Skip to content, Value: docs.arkiv.network/json-rpc/querying-data/#_top
+	3 container
+		4 link Description: [ ARKIV ] Docs, Value: docs.arkiv.network/
+		5 button Search
+			6 text ⌘
+			7 text K
+		8 link Description: GitHub, Value: github.com/arkiv-network
+		9 link Description: Discord, Value: discord.gg/arkiv
+		10 text Select theme
+		11 pop up button (collapsed, settable) Select theme, Value: Auto, Secondary Actions: Expand
+			12 menu
+				13 Dark
+				14 Light
+				15 (selected) Auto
+	16 container Main
+		17 content list
+			18 container
+				19 button (expanded) START HERE, Secondary Actions: Collapse
+					20 text START HERE
+				21 content list
+					22 link Description: Fundamentals, Value: docs.arkiv.network/start-here/fundamentals/
+					23 link Description: Installation, Value: docs.arkiv.network/start-here/installation/
+					24 link Description: Agent Skills, Value: docs.arkiv.network/start-here/agent-skill/
+					25 link Description: Data Explorer, Value: docs.arkiv.network/start-here/data-explorer/
+					26 link Description: Access Keys, Value: docs.arkiv.network/start-here/access-keys/
+			27 container
+				28 button (expanded) NETWORKS, Secondary Actions: Collapse
+					29 text NETWORKS
+				30 content list
+					31 link Description: Tiramisu, Value: docs.arkiv.network/networks/tiramisu/
+					32 link Description: Older networks, Value: docs.arkiv.network/networks/older-networks/
+			33 container
+				34 button (expanded) TYPESCRIPT SDK, Secondary Actions: Collapse
+					35 text TYPESCRIPT SDK
+				36 content list
+					37 link Description: Querying Data, Value: docs.arkiv.network/typescript-sdk/querying-data/
+					38 link Description: Mutating Data, Value: docs.arkiv.network/typescript-sdk/mutating-data/
+					39 link Description: Live Events, Value: docs.arkiv.network/typescript-sdk/live-events/
+					40 link Description: React Integration, Value: docs.arkiv.network/typescript-sdk/react-integration/
+					41 link Description: Best Practices, Value: docs.arkiv.network/typescript-sdk/best-practices/
+					42 button (collapsed) API REFERENCE, Secondary Actions: Expand
+						43 text API REFERENCE
+			44 container
+				45 button (expanded) LEARN BY DOING, Secondary Actions: Collapse
+					46 text LEARN BY DOING
+				47 content list
+					48 container
+						49 button (expanded) METAMASK SKETCH APP, Secondary Actions: Collapse
+							50 text METAMASK SKETCH APP
+						51 content list
+							52 link Description: Overview, Value: docs.arkiv.network/learn/metamask-sketch-app/
+							53 link Description: 1. Project Setup & Wallet, Value: docs.arkiv.network/learn/metamask-sketch-app/1-setup/
+							54 link Description: 2. Reading & Writing Data, Value: docs.arkiv.network/learn/metamask-sketch-app/2-data/
+							55 link Description: 3. Main Application, Value: docs.arkiv.network/learn/metamask-sketch-app/3-app/
+					56 container
+						57 button (expanded) FULLSTACK DASHBOARD, Secondary Actions: Collapse
+							58 text FULLSTACK DASHBOARD
+						59 content list
+							60 link Description: Overview, Value: docs.arkiv.network/learn/fullstack-dashboard/
+							61 link Description: 1. Project Setup & Wallet, Value: docs.arkiv.network/learn/fullstack-dashboard/01-project-setup/
+							62 link Description: 2. Storing Data on Arkiv, Value: docs.arkiv.network/learn/fullstack-dashboard/02-storing-data-on-arkiv/
+							63 link Description: 3. Visualizing on the Frontend, Value: docs.arkiv.network/learn/fullstack-dashboard/03-visualizing-on-the-frontend/
+							64 link Description: 4. Summary and Next Steps, Value: docs.arkiv.network/learn/fullstack-dashboard/04-summary-and-next-steps/
+			65 container
+				66 button (expanded) JSON-RPC API, Secondary Actions: Collapse
+					67 text JSON-RPC API
+				68 content list
+					69 link Description: Querying Data, Value: docs.arkiv.network/json-rpc/querying-data/
+					70 link Description: Mutating Entities, Value: docs.arkiv.network/json-rpc/mutating-entities/
+	71 container On this page
+		72 heading On this page, Value: 2, ID: starlight__on-this-page
+			73 text On this page
+		74 content list
+			75 link Description: Overview, Value: docs.arkiv.network/json-rpc/querying-data/#_top
+			76 link Description: Endpoint, Value: docs.arkiv.network/json-rpc/querying-data/#endpoint
+			77 link Description: Request Format, Value: docs.arkiv.network/json-rpc/querying-data/#request-format
+			78 container
+				79 link Description: arkiv_getEntity, Value: docs.arkiv.network/json-rpc/querying-data/#arkiv_getentity
+				80 content list
+					81 link Description: Parameters, Value: docs.arkiv.network/json-rpc/querying-data/#parameters
+			82 container
+				83 link Description: arkiv_query, Value: docs.arkiv.network/json-rpc/querying-data/#arkiv_query
+				84 content list
+					85 link Description: Parameters, Value: docs.arkiv.network/json-rpc/querying-data/#parameters-1
+					86 link Description: Query Syntax, Value: docs.arkiv.network/json-rpc/querying-data/#query-syntax
+					87 link Description: Options, Value: docs.arkiv.network/json-rpc/querying-data/#options
+					88 link Description: Response Structure, Value: docs.arkiv.network/json-rpc/querying-data/#response-structure
+					89 link Description: Query Examples, Value: docs.arkiv.network/json-rpc/querying-data/#query-examples
+					90 link Description: Pagination, Value: docs.arkiv.network/json-rpc/querying-data/#pagination
+			91 container
+				92 link Description: arkiv_getEntityCount, Value: docs.arkiv.network/json-rpc/querying-data/#arkiv_getentitycount
+				93 content list
+					94 link Description: Parameters, Value: docs.arkiv.network/json-rpc/querying-data/#parameters-2
+			95 link Description: arkiv_getBlockTiming, Value: docs.arkiv.network/json-rpc/querying-data/#arkiv_getblocktiming
+	96 container
+		97 heading Querying Data, Value: 1
+			98 text Querying Data
+		99 button Copy Markdown, ID: copy-markdown
+		100 button Open, ID: dropdown-toggle
+		101 text You can query entities stored on Arkiv with standard JSON-RPC 2.0 calls. This page covers the methods, query syntax, operators, pagination, and utility endpoints.
+		102 heading Endpoint, Value: 2, ID: endpoint
+			103 text Endpoint
+		104 link Description: Section titled “Endpoint”, Value: docs.arkiv.network/json-rpc/querying-data/#endpoint
+		105 table
+			106 row
+				107 cell
+					108 text Property
+				109 cell
+					110 text Value
+			111 row
+				112 cell
+					113 text Chain ID
+				114 cell
+					115 text 7738577
+					116 text  (
+					117 text 0x7614d1
+					118 text )
+			119 row
+				120 cell
+					121 text HTTP RPC
+				122 cell
+					123 text https://rpc.tiramisu.db-chain.testnet.arkiv.network
+			124 row
+				125 cell
+					126 text Explorer
+				127 cell
+					128 link Description: tiramisu.explorer.arkiv.network, Value: tiramisu.explorer.arkiv.network/
+		129 container Note
+			130 container
+				131 text This is the 
+				132 link Description: Tiramisu testnet, Value: docs.arkiv.network/networks/tiramisu/
+				133 text  endpoint. To inspect a transaction, block, or entity, open the 
+				134 link Description: explorer, Value: tiramisu.explorer.arkiv.network/
+				135 text .
+		136 heading Request Format, Value: 2, ID: request-format
+			137 text Request Format
+		138 link Description: Section titled “Request Format”, Value: docs.arkiv.network/json-rpc/querying-data/#request-format
+		139 text All methods use standard JSON-RPC 2.0:
+		140 container
+			141 text Terminal window
+		142 container
+			143 container
+				144 text curl https://rpc.tiramisu.db-chain.testnet.arkiv.network \
+			145 container
+				146 text -H " content-type: application/json " \
+			147 container
+				148 text -d ' {"jsonrpc":"2.0","id":1,"method":"METHOD_NAME","params":[]} '
+		149 container
+			150 button Copy to clipboard
+		151 heading arkiv_getEntity, Value: 2, ID: arkiv_getentity
+			152 text arkiv_getEntity
+		153 link Description: Section titled “arkiv_getEntity”, Value: docs.arkiv.network/json-rpc/querying-data/#arkiv_getentity
+		154 text This method reads one entity by key, at the tip or as of a past block.
+		155 heading Parameters, Value: 3, ID: parameters
+			156 text Parameters
+		157 link Description: Section titled “Parameters”, Value: docs.arkiv.network/json-rpc/querying-data/#parameters
+		158 table
+			159 row
+				160 cell
+					161 text Index
+				162 cell
+					163 text Type
+				164 cell
+					165 text Required
+				166 cell
+					167 text Description
+			168 row
+				169 cell
+					170 text 0
+				171 cell
+					172 text string
+				173 cell
+					174 text Yes
+				175 cell
+					176 text Entity key, 32-byte hex
+			177 row
+				178 cell
+					179 text 1
+				180 cell
+					181 text number
+				182 cell
+					183 text No
+				184 cell
+					185 text Block number to read as of
+		186 text This method returns every field on the entity. There is no 
+		187 text select
+		188 text  option, because the read already names a single entity. If the key never existed, was deleted, or expired, this method returns 
+		189 text null
+		190 text .
+		191 container
+			192 text Terminal window
+		193 container
+			194 container
+				195 text curl https://rpc.tiramisu.db-chain.testnet.arkiv.network \
+			196 container
+				197 text -H " content-type: application/json " \
+			198 container
+				199 text -d ' {"jsonrpc":"2.0","id":1,"method":"arkiv_getEntity","params":["0x9f2c..."]} '
+		200 container
+			201 button Copy to clipboard
+		202 heading arkiv_query, Value: 2
+			203 text arkiv_query
+		204 link Description: Section titled “arkiv_query”, Value: docs.arkiv.network/json-rpc/querying-data/#arkiv_query
+		205 text This method queries entities from the indexed store.
+		206 heading Parameters, Value: 3, ID: parameters-1
+			207 text Parameters
+		208 link Description: Section titled “Parameters”, Value: docs.arkiv.network/json-rpc/querying-data/#parameters-1
+		209 table
+			210 row
+				211 cell
+					212 text Index
+				213 cell
+					214 text Type
+				215 cell
+					216 text Required
+				217 cell
+					218 text Description
+			219 row
+				220 cell
+					221 text 0
+				222 cell
+					223 text string
+				224 cell
+					225 text Yes
+				226 cell
+					227 text Query expression
+			228 row
+				229 cell
+					230 text 1
+				231 cell
+					232 text object/null
+				233 cell
+					234 text No
+				235 cell
+					236 text Query options
+		237 heading Query Syntax, Value: 3, ID: query-syntax
+			238 text Query Syntax
+		239 link Description: Section titled “Query Syntax”, Value: docs.arkiv.network/json-rpc/querying-data/#query-syntax
+		240 text A query is a bare boolean expression, no 
+		241 text SELECT
+		242 text  or 
+		243 text WHERE
+		244 text . Keywords are case-insensitive. A comment starts with 
+		245 text --
+		246 text  and runs to the end of the line. For example, this query matches every open ticket with a priority of 3 or higher:
+		247 container
+			248 text -- open tickets, priority 3 or higher
+			249 text status = str('open') AND priority >= 3
+		250 container
+			251 button Copy to clipboard
+		252 text Operators:
+		253 table
+			254 row
+				255 cell
+					256 text Operator
+				257 cell
+					258 text Description
+			259 row
+				260 cell
+					261 text AND
+				262 cell
+					263 text Logical AND
+			264 row
+				265 cell
+					266 text OR
+				267 cell
+					268 text Logical OR
+			269 row
+				270 cell
+					271 text NOT
+				272 cell
+					273 text Complement, evaluated against the set of live entities
+			274 row
+				275 cell
+					276 text =
+				277 cell
+					278 text Equality
+			279 row
+				280 cell
+					281 text <
+					282 text , 
+					283 text >
+					284 text , 
+					285 text <=
+					286 text , 
+					287 text >=
+				288 cell
+					289 text Numeric comparisons (ordered types only: 
+					290 text i32
+					291 text , 
+					292 text u64
+					293 text , 
+					294 text u256
+					295 text , 
+					296 text dec
+					297 text )
+			298 row
+				299 cell
+					300 text STARTSWITH
+				301 cell
+					302 text String prefix match (the language’s only pattern operator)
+		303 container Caution
+			304 container
+				305 text !=  is reserved in the grammar but not implemented at this version. It fails to parse. Write  NOT (attr = value)  for the complement instead. This also matches entities that never set the attribute, because it is the full complement, not a typed not-equal.
+		306 text Value literals:
+		307 text Every value carries a type tag. The tag is part of what the predicate asserts. For example, 
+		308 text level >= i32(10)
+		309 text  matches only entities whose 
+		310 text level
+		311 text  is an 
+		312 text i32
+		313 text . Two things are untagged: a bare boolean (
+		314 text true
+		315 text  / 
+		316 text false
+		317 text ) and a bare number. An untagged number defaults to 
+		318 text i32
+		319 text . You must give every other value an explicit type tag:
+		320 table
+			321 row
+				322 cell
+					323 text Type
+				324 cell
+					325 text Literal form
+			326 row
+				327 cell
+					328 text String
+				329 cell
+					330 text str('open')
+			331 row
+				332 cell
+					333 text 32-bit integer
+				334 cell
+					335 text i32(10)
+					336 text  or bare 
+					337 text 10
+			338 row
+				339 cell
+					340 text 64-bit unsigned integer
+				341 cell
+					342 text u64(1200000)
+			343 row
+				344 cell
+					345 text 256-bit unsigned integer
+				346 cell
+					347 text u256(1000000)
+			348 row
+				349 cell
+					350 text Fixed-point decimal
+				351 cell
+					352 text dec('3.5')
+			353 row
+				354 cell
+					355 text Address
+				356 cell
+					357 text addr(0xAbC...)
+			358 row
+				359 cell
+					360 text Entity key
+				361 cell
+					362 text key(0x123...)
+			363 row
+				364 cell
+					365 text Fixed 32 bytes
+				366 cell
+					367 text bytes32(0x...)
+			368 row
+				369 cell
+					370 text Boolean
+				371 cell
+					372 text bare 
+					373 text true
+					374 text  / 
+					375 text false
+		376 text Match everything:
+		377 text *
+		378 container
+			379 button Copy to clipboard
+		380 text Synthetic attributes
+		381 text  (use with 
+		382 text $
+		383 text  prefix):
+		384 table
+			385 row
+				386 cell
+					387 text Attribute
+				388 cell
+					389 text Type
+				390 cell
+					391 text Filterable
+			392 row
+				393 cell
+					394 text $key
+				395 cell
+					396 text key
+				397 cell
+					398 text Yes
+			399 row
+				400 cell
+					401 text $owner
+				402 cell
+					403 text addr
+				404 cell
+					405 text Yes
+			406 row
+				407 cell
+					408 text $creator
+				409 cell
+					410 text addr
+				411 cell
+					412 text Yes
+			413 row
+				414 cell
+					415 text $expiresAt
+				416 cell
+					417 text u64
+				418 cell
+					419 text Yes
+			420 row
+				421 cell
+					422 text $createdAt
+				423 cell
+					424 text u64
+				425 cell
+					426 text Yes
+			427 row
+				428 cell
+					429 text $contentType
+				430 cell
+					431 text str
+				432 cell
+					433 text Yes
+			434 row
+				435 cell
+					436 text $updatedAt
+				437 cell
+					438 text n/a
+				439 cell
+					440 text No (returned by projections only)
+			441 row
+				442 cell
+					443 text $creationFlags
+				444 cell
+					445 text n/a
+				446 cell
+					447 text No (returned by projections only)
+			448 row
+				449 cell
+					450 text $payload
+				451 cell
+					452 text n/a
+				453 cell
+					454 text No (bytes carry no index)
+		455 container Caution
+			456 container
+				457 text exists(...)  and  typeof(...)  are reserved in the grammar but not implemented at this version: they fail to parse.
+		458 heading Options, Value: 3, ID: options
+			459 text Options
+		460 link Description: Section titled “Options”, Value: docs.arkiv.network/json-rpc/querying-data/#options
+		461 table
+			462 row
+				463 cell
+					464 text Field
+				465 cell
+					466 text Type
+				467 cell
+					468 text Description
+			469 row
+				470 cell
+					471 text select
+				472 cell
+					473 text object
+				474 cell
+					475 text Which fields to return. Defaults to 
+					476 text { "key": true }
+			477 row
+				478 cell
+					479 text limit
+				480 cell
+					481 text hex string
+				482 cell
+					483 text Page size. Node maximum is 200
+			484 row
+				485 cell
+					486 text cursor
+				487 cell
+					488 text string
+				489 cell
+					490 text Pagination cursor from a previous response
+			491 row
+				492 cell
+					493 text atBlock
+				494 cell
+					495 text hex string
+				496 cell
+					497 text Query at a specific block (for example, 
+					498 text "0x1bc"
+					499 text ). Defaults to the head
+		500 container
+			501 text select  fields
+		502 text  (all default to 
+		503 text false
+		504 text  except 
+		505 text key
+		506 text , which defaults to 
+		507 text true
+		508 text  when 
+		509 text select
+		510 text  is omitted):
+		511 text key
+		512 text , 
+		513 text owner
+		514 text , 
+		515 text creator
+		516 text , 
+		517 text createdAt
+		518 text , 
+		519 text updatedAt
+		520 text , 
+		521 text expiresAt
+		522 text , 
+		523 text creationFlags
+		524 text , 
+		525 text contentType
+		526 text , 
+		527 text payload
+		528 text , 
+		529 text attributeSchema
+		530 text , 
+		531 text attributes
+		532 text attributes
+		533 text  can also take an object of names, to fetch only those. For example: 
+		534 text { "attributes": { "status": true } }
+		535 text .
+		536 heading Response Structure, Value: 3, ID: response-structure
+			537 text Response Structure
+		538 link Description: Section titled “Response Structure”, Value: docs.arkiv.network/json-rpc/querying-data/#response-structure
+		539 container
+			540 text {
+			541 container
+				542 text "jsonrpc" :  " 2.0 " ,
+			543 container
+				544 text "id" :  1 ,
+			545 container
+				546 text "result" : {
+			547 container
+				548 text "data" : [
+			549 container
+				550 text {
+			551 container
+				552 text "key" :  " 0x9f2c... " ,
+			553 container
+				554 text "owner" :  " 0xabc... " ,
+			555 container
+				556 text "creator" :  " 0xabc... " ,
+			557 container
+				558 text "createdAt" :  " 0x191 " ,
+			559 container
+				560 text "updatedAt" :  " 0x1bb " ,
+			561 container
+				562 text "expiresAt" :  " 0x2000 " ,
+			563 container
+				564 text "creationFlags" : {  "readonly" :  false ,  "permissionlessExtension" :  false ,  "raw" :  0  },
+			565 container
+				566 text "contentType" :  " application/json " ,
+			567 container
+				568 text "payload" :  " 0x7b226d657373616765223a2268656c6c6f227d " ,
+			569 container
+				570 text "attributes" : [
+			571 container
+				572 text {  "name" :  " status " ,  "type" :  " str " ,  "value" :  " active "  },
+			573 container
+				574 text {  "name" :  " rarity " ,  "type" :  " i32 " ,  "value" :  5  }
+			575 container
+				576 text ]
+			577 container
+				578 text }
+			579 container
+				580 text ],
+			581 container
+				582 text "blockNumber" :  " 0x1bc " ,
+			583 container
+				584 text "cursor" :  " 0x2a "
+			585 container
+				586 text }
+			587 text }
+		588 container
+			589 button Copy to clipboard
+		590 container Note
+			591 container
+				592 text If you select a field, it appears in the response. If you do not select a field, it does not appear at all. The response never sends an unselected field as  null .
+			593 container
+				594 text payload  is hex-encoded bytes. Decode it to read the entity content.  createdAt ,  updatedAt  and  expiresAt  are hex block numbers. When no more pages remain,  cursor  is omitted.
+			595 container
+				596 text The  type  of an attribute decides the JSON encoding of its  value :
+			597 content list
+				598 container
+					599 AXListMarker • 
+					600 text i32 : a JSON number
+				601 container
+					602 AXListMarker • 
+					603 text u64  and  u256 : a  0x  hex quantity
+				604 container
+					605 AXListMarker • 
+					606 text dec : a decimal string
+				607 container
+					608 AXListMarker • 
+					609 text The byte-shaped types:  0x  bytes
+				610 container
+					611 AXListMarker • 
+					612 text str : a plain string
+		613 heading Query Examples, Value: 3, ID: query-examples
+			614 text Query Examples
+		615 link Description: Section titled “Query Examples”, Value: docs.arkiv.network/json-rpc/querying-data/#query-examples
+		616 text By attribute:
+		617 container
+			618 text Terminal window
+		619 container
+			620 container
+				621 text curl https://rpc.tiramisu.db-chain.testnet.arkiv.network \
+			622 container
+				623 text -H " content-type: application/json " \
+			624 container
+				625 text -d ' {
+			626 container
+				627 text "jsonrpc":"2.0","id":1,
+			628 container
+				629 text "method":"arkiv_query",
+			630 container
+				631 text "params":[
+			632 container
+				633 text "type = str( ' nft ' ) AND status = str( ' active ' )",
+			634 container
+				635 text {"limit":"0xa","select":{"key":true,"attributes":true}}
+			636 container
+				637 text ]
+			638 container
+				639 text } '
+		640 container
+			641 button Copy to clipboard
+		642 text By owner:
+		643 container
+			644 text Terminal window
+		645 container
+			646 container
+				647 text curl https://rpc.tiramisu.db-chain.testnet.arkiv.network \
+			648 container
+				649 text -H " content-type: application/json " \
+			650 container
+				651 text -d ' {
+			652 container
+				653 text "jsonrpc":"2.0","id":10,
+			654 container
+				655 text "method":"arkiv_query",
+			656 container
+				657 text "params":[
+			658 container
+				659 text "$owner = addr(0x2222222222222222222222222222222222222222)",
+			660 container
+				661 text null
+			662 container
+				663 text ]
+			664 container
+				665 text } '
+		666 container
+			667 button Copy to clipboard
+		668 text Numeric range:
+		669 container
+			670 text Terminal window
+		671 container
+			672 container
+				673 text curl https://rpc.tiramisu.db-chain.testnet.arkiv.network \
+			674 container
+				675 text -H " content-type: application/json " \
+			676 container
+				677 text -d ' {
+			678 container
+				679 text "jsonrpc":"2.0","id":12,
+			680 container
+				681 text "method":"arkiv_query",
+			682 container
+				683 text "params":["price >= i32(100) AND price <= i32(1000)", null]
+			684 container
+				685 text } '
+		686 container
+			687 button Copy to clipboard
+		688 text Prefix match with negation:
+		689 container
+			690 text Terminal window
+		691 container
+			692 container
+				693 text curl https://rpc.tiramisu.db-chain.testnet.arkiv.network \
+			694 container
+				695 text -H " content-type: application/json " \
+			696 container
+				697 text -d ' {
+			698 container
+				699 text "jsonrpc":"2.0","id":13,
+			700 container
+				701 text "method":"arkiv_query",
+			702 container
+				703 text "params":["name STARTSWITH str( ' test ' ) AND NOT (status = str( ' deleted ' ))", null]
+			704 container
+				705 text } '
+		706 container
+			707 button Copy to clipboard
+		708 text Metadata only (omit payload):
+		709 container
+			710 text Terminal window
+		711 container
+			712 container
+				713 text curl https://rpc.tiramisu.db-chain.testnet.arkiv.network \
+			714 container
+				715 text -H " content-type: application/json " \
+			716 container
+				717 text -d ' {
+			718 container
+				719 text "jsonrpc":"2.0","id":14,
+			720 container
+				721 text "method":"arkiv_query",
+			722 container
+				723 text "params":[
+			724 container
+				725 text "*",
+			726 container
+				727 text {
+			728 container
+				729 text "limit":"0xa",
+			730 container
+				731 text "select":{
+			732 container
+				733 text "key":true,"attributes":true,"payload":false,
+			734 container
+				735 text "contentType":true,"expiresAt":true,
+			736 container
+				737 text "creator":true,"owner":true
+			738 container
+				739 text }
+			740 container
+				741 text }
+			742 container
+				743 text ]
+			744 container
+				745 text } '
+		746 container
+			747 button Copy to clipboard
+		748 heading Pagination, Value: 3, ID: pagination
+			749 text Pagination
+		750 link Description: Section titled “Pagination”, Value: docs.arkiv.network/json-rpc/querying-data/#pagination
+		751 text Use the returned 
+		752 text cursor
+		753 text  in the next request:
+		754 container
+			755 text {
+			756 container
+				757 text "method" :  " arkiv_query " ,
+			758 container
+				759 text "params" : [
+			760 container
+				761 text " type = str('nft') " ,
+			762 container
+				763 text {  "cursor" :  " 0x2a " ,  "limit" :  " 0x2 "  }
+			764 container
+				765 text ]
+			766 text }
+		767 container
+			768 button Copy to clipboard
+		769 text When 
+		770 text cursor
+		771 text  is absent from the response, there are no more pages.
+		772 heading arkiv_getEntityCount, Value: 2, ID: arkiv_getentitycount
+			773 text arkiv_getEntityCount
+		774 link Description: Section titled “arkiv_getEntityCount”, Value: docs.arkiv.network/json-rpc/querying-data/#arkiv_getentitycount
+		775 text This method returns the total number of entities that match an optional query, at the tip or a past block.
+		776 heading Parameters, Value: 3, ID: parameters-2
+			777 text Parameters
+		778 link Description: Section titled “Parameters”, Value: docs.arkiv.network/json-rpc/querying-data/#parameters-2
+		779 table
+			780 row
+				781 cell
+					782 text Index
+				783 cell
+					784 text Type
+				785 cell
+					786 text Required
+				787 cell
+					788 text Description
+			789 row
+				790 cell
+					791 text 0
+				792 cell
+					793 text object/null
+				794 cell
+					795 text No
+				796 cell
+					797 text { "query"?: string, "block"?: number }
+					798 text . Defaults to every entity at the tip
+		799 container
+			800 text Terminal window
+		801 container
+			802 container
+				803 text curl https://rpc.tiramisu.db-chain.testnet.arkiv.network \
+			804 container
+				805 text -H " content-type: application/json " \
+			806 container
+				807 text -d ' {"jsonrpc":"2.0","id":3,"method":"arkiv_getEntityCount","params":[]} '
+		808 container
+			809 button Copy to clipboard
+		810 text Result: a plain JSON number (for example, 
+		811 text 18427
+		812 text ).
+		813 heading arkiv_getBlockTiming, Value: 2, ID: arkiv_getblocktiming
+			814 text arkiv_getBlockTiming
+		815 link Description: Section titled “arkiv_getBlockTiming”, Value: docs.arkiv.network/json-rpc/querying-data/#arkiv_getblocktiming
+		816 text This method returns the timing for the current head block. It takes no parameters.
+		817 container
+			818 text {
+			819 container
+				820 text "result" : {
+			821 container
+				822 text "current_block" :  582143 ,
+			823 container
+				824 text "current_block_time" :  1742721127 ,
+			825 container
+				826 text "duration" :  2
+			827 container
+				828 text }
+			829 text }
+		830 container
+			831 button Copy to clipboard
+		832 content list
+			833 container
+				834 AXListMarker • 
+				835 text current_block_time : Unix timestamp in seconds
+			836 container
+				837 AXListMarker • 
+				838 text duration : seconds since the previous block
+		839 link Description: Previous 4. Summary and Next Steps, Value: docs.arkiv.network/learn/fullstack-dashboard/04-summary-and-next-steps/
+		840 link Description: Next Mutating Entities, Value: docs.arkiv.network/json-rpc/mutating-entities/
+		841 container
+			842 text Was this page helpful?
+			843 container Was this page helpful?
+				844 checkbox Description: This page was helpful, Value: 0
+				845 checkbox Description: This page was not helpful, Value: 0
+			846 text entry area (settable) Description: Optional feedback comment, ID: arkiv-feedback-comment
+			847 button (disabled) Send
+
+The focused UI element is 1 AXWebArea Querying Data | Arkiv documentation, URL: docs.arkiv.network/json-rpc/querying-data/
