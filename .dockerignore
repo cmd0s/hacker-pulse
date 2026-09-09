@@ -1,0 +1,22 @@
+# Allow only inputs required for the build. Never send wallet material or Git.
+**
+!package.json
+!package-lock.json
+!tsconfig.json
+!next.config.ts
+!vite.config.ts
+!app/
+!app/**
+!components/
+!components/**
+!hooks/
+!hooks/**
+!lib/
+!lib/**
+!arkiv/
+!arkiv/model.ts
+!arkiv/query.test.mjs
+!public/
+!public/**
+!.openai/
+!.openai/hosting.json

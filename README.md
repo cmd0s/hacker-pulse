@@ -18,6 +18,12 @@ Open the printed localhost URL in a browser. Reading and inspecting recorded pro
 
 `npm run demo` executes a real, gas-spending test using `.local/test-wallet.json` (ignored, never shipped). It caps worst-case fees of the two writes at 0.01 test GLM and records snapshots until expiry. Only run deliberately. It requires a funded test wallet and Node 24 TypeScript stripping. The finished run remains in `arkiv/evidence/live-run.json` and `public/evidence/latest.json`; archive these before a new run. No wallet key is included in this repository.
 
+## Docker / Dokploy
+
+The private source repository is `cmd0s/hacker-pulse`. For a shareable demo without ChatGPT sign-in, deploy the included Dockerfile through Dokploy. It runs the standalone Node production server on port 3000; no secrets or persistent volumes are required. The test wallet stays local.
+
+See [Dokploy configuration and local Docker check](docs/dokploy.md). The existing `npm run build` still targets Sites; Docker uses `npm run build:node`.
+
 ## Demo
 
 View before → View after shows **recorded results from a real verified run**, visibly labelled. Live returns to current public RPC data. Export evidence downloads browser observations and the separately labelled completed run. Station lifetime is 3600 blocks, so the live board will eventually empty; recorded proof survives.

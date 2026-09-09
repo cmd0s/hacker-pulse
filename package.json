@@ -13,7 +13,8 @@
     "format": "oxfmt",
     "test": "node --test arkiv/query.test.mjs",
     "typecheck": "tsc --noEmit",
-    "demo": "node arkiv/run-demo.mjs"
+    "demo": "node arkiv/run-demo.mjs",
+    "build:node": "HACKER_PULSE_TARGET=node vinext build"
   },
   "dependencies": {
     "@arkiv-network/sdk": "0.8.0-dev.4",
